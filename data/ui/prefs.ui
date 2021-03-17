@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.38.2 -->
+<interface>
+  <requires lib="gtk+" version="3.22"/>
+  <template class="SchemeEditorApplicationPreferences" parent="GtkDialog">
+    <property name="can-focus">False</property>
+    <property name="title" translatable="yes">Preferences</property>
+    <property name="resizable">False</property>
+    <property name="modal">True</property>
+    <property name="type-hint">normal</property>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="vbox">
+        <property name="can-focus">False</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox">
+            <property name="can-focus">False</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <!-- n-columns=2 n-rows=2 -->
+          <object class="GtkGrid" id="grid">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="border-width">8</property>
+            <property name="row-spacing">12</property>
+            <property name="column-spacing">6</property>
+            <child>
+              <object class="GtkLabel" id="fontlabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label">_Font:</property>
+                <property name="use-underline">True</property>
+                <property name="mnemonic-widget">font</property>
+                <property name="xalign">1</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkFontButton" id="font">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="receives-default">False</property>
+                <property name="font">Sans 12</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkComboBoxText" id="default_language">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <items>
+                  <item id="c" translatable="yes">C</item>
+                  <item id="java" translatable="yes">Java</item>
+                  <item id="vala" translatable="yes">Vala</item>
+                  <item id="sh" translatable="yes">Shell script</item>
+                  <item id="xml" translatable="yes">XML</item>
+                  <item id="html" translatable="yes">HTML</item>
+                  <item id="glsl" translatable="yes">GLSL</item>
+                  <item id="cpp" translatable="yes">C++</item>
+                </items>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Default language:</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

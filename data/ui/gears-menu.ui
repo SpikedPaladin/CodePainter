@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<interface>
+  <requires lib="gtk+" version="3.12"/>
+  <menu id="menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Save _as</attribute>
+        <attribute name="action">win.save-as</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Preferences</attribute>
+        <attribute name="action">win.preferences</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Inspector</attribute>
+        <attribute name="action">win.inspector</attribute>
+      </item>
+    </section>
+  </menu>
+</interface>

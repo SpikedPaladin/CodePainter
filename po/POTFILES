@@ -1,0 +1,7 @@
+data/me.paladin.SchemeEditor.desktop.in
+data/me.paladin.SchemeEditor.appdata.xml.in
+data/me.paladin.SchemeEditor.gschema.xml
+src/window.ui
+src/main.vala
+src/window.vala
+

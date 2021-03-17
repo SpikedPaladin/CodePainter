@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema path="/me/paladin/SchemeEditor/" id="me.paladin.SchemeEditor">
+    <key name="font" type="s">
+      <default>'Monospace 12'</default>
+      <summary>Font</summary>
+      <description>The font to be used for preview.</description>
+    </key>
+    <key name="default-language" type="s">
+      <choices>
+        <choice value="c"/>
+        <choice value="java"/>
+        <choice value="vala"/>
+        <choice value="sh"/>
+        <choice value="xml"/>
+        <choice value="html"/>
+        <choice value="glsl"/>
+        <choice value="cpp"/>
+      </choices>
+      <default>'c'</default>
+      <summary>Default language</summary>
+      <description>Default language sample used in preview</description>
+    </key>
+  </schema>
+</schemalist>
