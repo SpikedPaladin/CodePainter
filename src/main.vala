@@ -5,4 +5,3 @@ namespace SchemeEditor {
         return application.run(args);
     }
 }
-

@@ -475,9 +475,7 @@ namespace SchemeEditor {
                 var language = language_manager.get_language(current_language);
                 
                 ArrayList<string> style_ids = new ArrayList<string>.wrap(language.get_style_ids());
-                style_ids.sort((a, b) => {
-                    return a.collate(b);
-                });
+                style_ids.sort((a, b) => a.collate(b));
                 
                 if (current_language == "def") {
                     string[] gui_style_ids = {
@@ -508,7 +506,6 @@ namespace SchemeEditor {
                     
                     style_store.set(iter, 0, style.substring(style.last_index_of(":") + 1));
                 }
-                
                 
                 if (style_ids != null && style_ids.size > 0) {
                     tree_view_styles.get_model().get_iter_first(out iter);
@@ -614,4 +611,3 @@ namespace SchemeEditor {
         }
     }
 }
-
