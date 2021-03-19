@@ -361,41 +361,44 @@ namespace SchemeEditor {
             Xml.Parser.cleanup();
         }
         
-        // TODO rewrite with libxml
-        private bool write_scheme(string path, string? scheme_id = null) {
-            var output = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-            output += @"<style-scheme id=\"$(scheme_id ?? entry_id.get_text())\" name=\"$(entry_name.get_text())\" version=\"1.0\">\n";
-            output += @"    <author>$(entry_author.get_text())</author>\n";
-            output += @"    <description>$(entry_description.get_text())</description>\n    \n";
+        private void write_scheme(string path, string? scheme_id = null) {
+            var writer = new Xml.TextWriter.filename(path);
+            writer.set_indent(true);
+            writer.set_indent_string("  ");
+            
+            writer.start_document("1.0", "UTF-8");
+            writer.start_element("style-scheme");
+            writer.write_attribute("id", scheme_id ?? entry_id.get_text());
+            writer.write_attribute("name", entry_name.get_text());
+            writer.write_attribute("version", "1.0");
+            
+            writer.write_element("author", entry_author.get_text());
+            writer.write_element("description", entry_description.get_text());
             
             foreach (var entry in styles.entries) {
-                output += @"    <style name=\"$(entry.key)\"";
+                writer.start_element("style");
+                writer.write_attribute("name", entry.key);
                 
                 if (entry.value.foreground != null)
-                    output += @" foreground=\"$(entry.value.foreground)\"";
+                    writer.write_attribute("foreground", entry.value.foreground);
                 if (entry.value.background != null)
-                    output += @" background=\"$(entry.value.background)\"";
-                if (entry.value.italic)
-                    output += " italic=\"true\"";
+                    writer.write_attribute("background", entry.value.background);
                 if (entry.value.bold)
-                    output += " bold=\"true\"";
+                    writer.write_attribute("bold", "true");
+                if (entry.value.italic)
+                    writer.write_attribute("italic", "true");
                 if (entry.value.underline)
-                    output += " underline=\"true\"";
+                    writer.write_attribute("underline", "true");
                 if (entry.value.strikethrough)
-                    output += " strikethrough=\"true\"";
+                    writer.write_attribute("strikethrough", "true");
                 
-                output += "/>\n";
+                writer.end_element();
             }
             
-            output += "</style-scheme>";
+            writer.end_element();
+            writer.end_document();
             
-            try {
-                FileUtils.set_contents(path, output);
-                return true;
-            } catch (FileError er) {
-                print(er.message);
-                return false;
-            }
+            writer.flush();
         }
         
         private void on_style_selected(Gtk.TreeSelection selection) {
