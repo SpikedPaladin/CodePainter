@@ -308,7 +308,7 @@ namespace SchemeEditor {
                 if (!(directory in scheme_manager.get_search_path()))
                     scheme_manager.prepend_search_path(directory);
                 
-                string scheme_id = get_scheme_id(file.get_path());
+                string scheme_id = XmlUtil.get_scheme_id(file.get_path());
                 
                 if (scheme_id == null)
                     return false;
@@ -323,8 +323,7 @@ namespace SchemeEditor {
             
             current_scheme = style_scheme;
             
-            styles.clear();
-            load_styles(current_scheme.get_filename());
+            XmlUtil.load_styles(ref current_scheme, ref styles);
             
             entry_name.set_text(current_scheme.get_name());
             entry_id.set_text(current_scheme.get_id());
@@ -339,66 +338,15 @@ namespace SchemeEditor {
             return true;
         }
         
-        private void load_styles(string path) {
-            Xml.Parser.init();
-            
-            Xml.Doc* doc = Xml.Parser.parse_file(path);
-            
-            for (Xml.Node* iter = doc->get_root_element()->children; iter != null; iter = iter->next) {
-                if (iter->type != Xml.ElementType.ELEMENT_NODE || iter->name != "style")
-                    continue;
-                
-                for (Xml.Attr* prop = iter->properties; prop != null; prop = prop->next) {
-                    if (prop->name == "name") {
-                        var style_name = prop->children->content;
-                        
-                        styles.set(style_name, new Style.from_source_style(current_scheme.get_style(style_name)));
-                        break;
-                    }
-                }
-            }
-            
-            Xml.Parser.cleanup();
-        }
-        
-        private void write_scheme(string path, string? scheme_id = null) {
-            var writer = new Xml.TextWriter.filename(path);
-            writer.set_indent(true);
-            writer.set_indent_string("  ");
-            
-            writer.start_document("1.0", "UTF-8");
-            writer.start_element("style-scheme");
-            writer.write_attribute("id", scheme_id ?? entry_id.get_text());
-            writer.write_attribute("name", entry_name.get_text());
-            writer.write_attribute("version", "1.0");
-            
-            writer.write_element("author", entry_author.get_text());
-            writer.write_element("description", entry_description.get_text());
-            
-            foreach (var entry in styles.entries) {
-                writer.start_element("style");
-                writer.write_attribute("name", entry.key);
-                
-                if (entry.value.foreground != null)
-                    writer.write_attribute("foreground", entry.value.foreground);
-                if (entry.value.background != null)
-                    writer.write_attribute("background", entry.value.background);
-                if (entry.value.bold)
-                    writer.write_attribute("bold", "true");
-                if (entry.value.italic)
-                    writer.write_attribute("italic", "true");
-                if (entry.value.underline)
-                    writer.write_attribute("underline", "true");
-                if (entry.value.strikethrough)
-                    writer.write_attribute("strikethrough", "true");
-                
-                writer.end_element();
-            }
-            
-            writer.end_element();
-            writer.end_document();
-            
-            writer.flush();
+        private void write_scheme(string path, string? id = null) {
+            XmlUtil.write_scheme(
+                path,
+                id ?? entry_id.get_text(),
+                entry_name.get_text(),
+                entry_author.get_text(),
+                entry_description.get_text(),
+                ref styles
+            );
         }
         
         private void on_style_selected(Gtk.TreeSelection selection) {
@@ -563,46 +511,6 @@ namespace SchemeEditor {
             scheme_manager.force_rescan();
             
             source_buffer.set_style_scheme(scheme_manager.get_scheme(temp_scheme_id));
-        }
-        
-        private string? get_scheme_id(string path) {
-            Xml.Parser.init();
-            
-            Xml.Doc* doc = Xml.Parser.parse_file(path);
-            if (doc == null) {
-                Xml.Parser.cleanup();
-                print(@"File $path not found or permissions missing");
-                return null;
-            }
-            
-            Xml.Node* root = doc->get_root_element();
-            if (root == null) {
-                delete doc;
-                Xml.Parser.cleanup();
-                print(@"The xml file '$path' is empty");
-                return null;
-            }
-            
-            if (root->name != "style-scheme") {
-                delete doc;
-                Xml.Parser.cleanup();
-                print(@"The xml file '$path' is not a style scheme");
-                return null;
-            }
-            
-            string scheme_id = root->get_prop("id");
-            if (scheme_id == null) {
-                delete doc;
-                Xml.Parser.cleanup();
-                print(@"ID not found in file '$path'");
-                return null;
-            }
-            
-            delete doc;
-            
-            Xml.Parser.cleanup();
-            
-            return scheme_id;
         }
         
         private string get_color_from_rgba(Gdk.RGBA rgba) {
