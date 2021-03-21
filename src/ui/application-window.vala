@@ -355,11 +355,6 @@ namespace SchemeEditor {
             
             if (selection.get_selected(out model, out iter)) {
                 model.get(iter, 0, out current_style_id);
-                current_style_id = @"$current_language:$current_style_id";
-                
-                if (!(current_style_id in styles.keys) && current_language == "def") {
-                    model.get(iter, 0, out current_style_id);
-                }
                 
                 SignalHandler.block(toggle_bold, toggle_bold_handler);
                 SignalHandler.block(toggle_italic, toggle_italic_handler);
@@ -448,14 +443,14 @@ namespace SchemeEditor {
                     foreach (var style in gui_style_ids) {
                         style_store.append(out iter);
                         
-                        style_store.set(iter, 0, style);
+                        style_store.set(iter, 0, style, 1, style);
                     }
                 }
                 
                 foreach (var style in style_ids) {
                     style_store.append(out iter);
                     
-                    style_store.set(iter, 0, style.substring(style.last_index_of(":") + 1));
+                    style_store.set(iter, 0, style, 1, style.substring(style.last_index_of(":") + 1));
                 }
                 
                 if (style_ids != null && style_ids.size > 0) {

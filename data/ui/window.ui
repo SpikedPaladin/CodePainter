@@ -80,6 +80,8 @@
   </object>
   <object class="GtkListStore" id="style_store">
     <columns>
+      <!-- column-name id -->
+      <column type="gchararray"/>
       <!-- column-name name -->
       <column type="gchararray"/>
     </columns>
@@ -175,7 +177,7 @@
                             <child>
                               <object class="GtkCellRendererText" id="style_name"/>
                               <attributes>
-                                <attribute name="text">0</attribute>
+                                <attribute name="text">1</attribute>
                               </attributes>
                             </child>
                           </object>
