@@ -27,6 +27,8 @@ namespace SchemeEditor {
                 }
             }
             
+            delete doc;
+            
             Xml.Parser.cleanup();
         }
         
