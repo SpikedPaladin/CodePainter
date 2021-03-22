@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
     <gresource prefix="/me/paladin/SchemeEditor">
-      <file preprocess="xml-stripblanks">ui/gears-menu.ui</file>
-      <file preprocess="xml-stripblanks">ui/prefs.ui</file>
-      <file preprocess="xml-stripblanks">ui/window.ui</file>
+      <!-- Window -->
+      <file preprocess="xml-stripblanks">ui/window-main.ui</file>
+      
+      <!-- Dialog -->
+      <file preprocess="xml-stripblanks">ui/dialog-preferences.ui</file>
+      
+      <!-- Menu -->
+      <file preprocess="xml-stripblanks">ui/menu-main.ui</file>
     </gresource>
 </gresources>

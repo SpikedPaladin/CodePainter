@@ -16,8 +16,9 @@ project_sources = files(
     
     'core/application.vala',
     
-    'ui/application-window.vala',
-    'ui/application-preferences.vala'
+    'ui/main-window.vala',
+    
+    'ui/dialog/preferences-dialog.vala',
 )
 
 executable('scheme-editor',

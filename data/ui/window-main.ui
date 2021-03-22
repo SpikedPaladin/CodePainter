@@ -86,7 +86,7 @@
       <column type="gchararray"/>
     </columns>
   </object>
-  <template class="SchemeEditorApplicationWindow" parent="GtkApplicationWindow">
+  <template class="SchemeEditorMainWindow" parent="GtkApplicationWindow">
     <property name="can-focus">False</property>
     <property name="default-width">600</property>
     <property name="default-height">400</property>

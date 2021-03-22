@@ -2,8 +2,8 @@ using Gee;
 
 namespace SchemeEditor {
     
-    [GtkTemplate (ui = "/me/paladin/SchemeEditor/ui/window.ui")]
-    public class ApplicationWindow : Gtk.ApplicationWindow {
+    [GtkTemplate (ui = "/me/paladin/SchemeEditor/ui/window-main.ui")]
+    public class MainWindow : Gtk.ApplicationWindow {
         private Gtk.SourceStyleSchemeManager scheme_manager;
         private Gtk.SourceLanguageManager language_manager;
         private Gtk.SourceStyleScheme current_scheme;
@@ -80,7 +80,7 @@ namespace SchemeEditor {
         [GtkChild]
         private unowned Gtk.CheckButton check_background;
         
-        public ApplicationWindow(Gtk.Application application) {
+        public MainWindow(Gtk.Application application) {
             Object(application: application);
             
             // Fix 'Invalid object type GtkSourceView' error
@@ -150,7 +150,7 @@ namespace SchemeEditor {
             tree_view_styles.get_selection().changed.connect(on_style_selected);
             on_language_selected();
             
-            var builder = new Gtk.Builder.from_resource("/me/paladin/SchemeEditor/ui/gears-menu.ui");
+            var builder = new Gtk.Builder.from_resource("/me/paladin/SchemeEditor/ui/menu-main.ui");
             var menu = builder.get_object("menu") as MenuModel;
             
             var action = new SimpleAction("save-as", null);
@@ -158,7 +158,7 @@ namespace SchemeEditor {
             add_action(action);
             
             action = new SimpleAction("preferences", null);
-            action.activate.connect(() => new ApplicationPreferences(this).present());
+            action.activate.connect(() => new PreferencesDialog(this).present());
             add_action(action);
             
             action = new SimpleAction("inspector", null);
@@ -345,7 +345,7 @@ namespace SchemeEditor {
                 entry_name.get_text(),
                 entry_author.get_text(),
                 entry_description.get_text(),
-                ref styles
+                styles
             );
         }
         

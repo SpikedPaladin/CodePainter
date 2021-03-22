@@ -1,14 +1,14 @@
 namespace SchemeEditor {
     
     public class Application : Gtk.Application {
-        private ApplicationWindow window;
+        private MainWindow window;
         
         public Application() {
             application_id = "me.paladin.SchemeEditor";
         }
         
         public override void activate() {
-            window = new ApplicationWindow(this);
+            window = new MainWindow(this);
             window.present();
         }
         
@@ -17,3 +17,4 @@ namespace SchemeEditor {
         }
     }
 }
+

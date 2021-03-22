@@ -1,7 +1,7 @@
 namespace SchemeEditor {
     
-    [GtkTemplate (ui = "/me/paladin/SchemeEditor/ui/prefs.ui")]
-    public class ApplicationPreferences : Gtk.Dialog {
+    [GtkTemplate (ui = "/me/paladin/SchemeEditor/ui/dialog-preferences.ui")]
+    public class PreferencesDialog : Gtk.Dialog {
         private Settings settings;
         
         [GtkChild]
@@ -10,7 +10,7 @@ namespace SchemeEditor {
         [GtkChild]
         private unowned Gtk.ComboBoxText default_language;
         
-        public ApplicationPreferences(ApplicationWindow window) {
+        public PreferencesDialog(Gtk.Window window) {
             Object(
                     transient_for: window,
                     use_header_bar: 1
