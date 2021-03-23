@@ -11,10 +11,5 @@ namespace SchemeEditor {
             window = new MainWindow(this);
             window.present();
         }
-        
-        public override void startup() {
-            base.startup();
-        }
     }
 }
-
