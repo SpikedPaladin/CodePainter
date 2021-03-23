@@ -50,8 +50,11 @@ namespace SchemeEditor {
             writer.write_attribute("name", name);
             writer.write_attribute("version", "1.0");
             
-            writer.write_element("author", author);
-            writer.write_element("description", description);
+            if (author != "")
+                writer.write_element("author", author);
+            
+            if (description != "")
+                writer.write_element("description", description);
             
             foreach (var entry in styles.entries) {
                 writer.start_element("style");
