@@ -38,7 +38,7 @@ namespace SchemeEditor {
             string name,
             string author,
             string description,
-            ref HashMap<string, Style> styles
+            HashMap<string, Style>? styles = null
         ) {
             var writer = new Xml.TextWriter.filename(path);
             writer.set_indent(true);
@@ -56,24 +56,26 @@ namespace SchemeEditor {
             if (description != "")
                 writer.write_element("description", description);
             
-            foreach (var entry in styles.entries) {
-                writer.start_element("style");
-                writer.write_attribute("name", entry.key);
-                
-                if (entry.value.foreground != null)
-                    writer.write_attribute("foreground", entry.value.foreground);
-                if (entry.value.background != null)
-                    writer.write_attribute("background", entry.value.background);
-                if (entry.value.bold)
-                    writer.write_attribute("bold", "true");
-                if (entry.value.italic)
-                    writer.write_attribute("italic", "true");
-                if (entry.value.underline)
-                    writer.write_attribute("underline", "true");
-                if (entry.value.strikethrough)
-                    writer.write_attribute("strikethrough", "true");
-                
-                writer.end_element();
+            if (styles != null) {
+                foreach (var entry in styles.entries) {
+                    writer.start_element("style");
+                    writer.write_attribute("name", entry.key);
+                    
+                    if (entry.value.foreground != null)
+                        writer.write_attribute("foreground", entry.value.foreground);
+                    if (entry.value.background != null)
+                        writer.write_attribute("background", entry.value.background);
+                    if (entry.value.bold)
+                        writer.write_attribute("bold", "true");
+                    if (entry.value.italic)
+                        writer.write_attribute("italic", "true");
+                    if (entry.value.underline)
+                        writer.write_attribute("underline", "true");
+                    if (entry.value.strikethrough)
+                        writer.write_attribute("strikethrough", "true");
+                    
+                    writer.end_element();
+                }
             }
             
             writer.end_element();

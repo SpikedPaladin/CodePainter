@@ -5,7 +5,13 @@
       <file preprocess="xml-stripblanks">ui/window-main.ui</file>
       
       <!-- Dialog -->
+      <file preprocess="xml-stripblanks">ui/create-dialog.ui</file>
       <file preprocess="xml-stripblanks">ui/dialog-preferences.ui</file>
+      
+      <!-- Widget -->
+      <file preprocess="xml-stripblanks">ui/scheme-row.ui</file>
+      <file preprocess="xml-stripblanks">ui/editor-page.ui</file>
+      <file preprocess="xml-stripblanks">ui/home-page.ui</file>
       
       <!-- Menu -->
       <file preprocess="xml-stripblanks">ui/menu-main.ui</file>
