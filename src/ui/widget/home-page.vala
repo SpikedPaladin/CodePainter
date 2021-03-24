@@ -6,7 +6,18 @@ namespace SchemeEditor {
         [GtkChild]
         private unowned ListBox list;
         
+        [GtkChild]
+        private unowned Gtk.Revealer revealer;
+        [GtkChild]
+        private unowned Gtk.Button button_trash;
+        
         construct {
+            list.selected.connect((count) => {
+                if (!list.selecting) {
+                    toggle_selection(true);
+                }
+                button_trash.set_sensitive(count > 0);
+            });
             list.open_scheme.connect((id) => scheme_selected(id));
             load_schemes();
         }
@@ -24,10 +35,30 @@ namespace SchemeEditor {
         }
         
         public void update_page() {
+            toggle_selection(false);
             Gtk.SourceStyleSchemeManager.get_default().force_rescan();
             
             list.clear();
             load_schemes();
+        }
+        
+        public signal void toggle_selection(bool selecting) {
+            if (!selecting) {
+                button_trash.set_sensitive(false);
+            }
+            revealer.reveal_child = selecting;
+            list.toggle_selection(selecting);
+        }
+        
+        [GtkCallback]
+        private void trash_clicked() {
+            if (get_window() != null) {
+                new DeleteDialog(
+                        get_toplevel() as Gtk.Window,
+                        list.get_selected(),
+                        () => update_page()
+                ).present();
+            }
         }
         
         public signal void scheme_selected(string id);

@@ -9,21 +9,22 @@
       <object class="GtkBox">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
-        <property name="border-width">10</property>
-        <property name="orientation">vertical</property>
         <child>
-          <object class="GtkLabel" id="row_title">
+          <object class="GtkRevealer" id="revealer">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="halign">start</property>
-            <property name="valign">end</property>
-            <property name="hexpand">True</property>
-            <property name="label" translatable="yes">Name</property>
-            <property name="ellipsize">end</property>
-            <attributes>
-              <attribute name="scale" value="1.2"/>
-              <attribute name="weight" value="bold"/>
-            </attributes>
+            <property name="transition-type">slide-left</property>
+            <child>
+              <object class="GtkCheckButton" id="check_selected">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="margin-start">8</property>
+                <property name="draw-indicator">True</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -32,19 +33,52 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="row_subtitle">
+          <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="halign">start</property>
-            <property name="valign">baseline</property>
-            <property name="label" translatable="yes">ID</property>
-            <property name="ellipsize">end</property>
-            <attributes>
-              <attribute name="scale" value="0.833"/>
-            </attributes>
-            <style>
-              <class name="dim-label"/>
-            </style>
+            <property name="border-width">10</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkLabel" id="row_title">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="halign">start</property>
+                <property name="valign">end</property>
+                <property name="hexpand">True</property>
+                <property name="label" translatable="yes">Name</property>
+                <property name="ellipsize">end</property>
+                <attributes>
+                  <attribute name="scale" value="1.2"/>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="row_subtitle">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="halign">start</property>
+                <property name="valign">baseline</property>
+                <property name="label" translatable="yes">ID</property>
+                <property name="ellipsize">end</property>
+                <attributes>
+                  <attribute name="scale" value="0.83299999999999996"/>
+                </attributes>
+                <style>
+                  <class name="dim-label"/>
+                </style>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>

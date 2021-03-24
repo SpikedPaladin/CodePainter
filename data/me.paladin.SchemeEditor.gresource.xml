@@ -6,6 +6,7 @@
       
       <!-- Dialog -->
       <file preprocess="xml-stripblanks">ui/dialog-create.ui</file>
+      <file preprocess="xml-stripblanks">ui/dialog-delete.ui</file>
       <file preprocess="xml-stripblanks">ui/dialog-preferences.ui</file>
       
       <!-- Widget -->

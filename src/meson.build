@@ -19,6 +19,7 @@ project_sources = files(
     'ui/main-window.vala',
     
     'ui/dialog/create-dialog.vala',
+    'ui/dialog/delete-dialog.vala',
     'ui/dialog/preferences-dialog.vala',
     
     'ui/widget/list-box.vala',
