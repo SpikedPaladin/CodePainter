@@ -1,6 +1,6 @@
 namespace SchemeEditor {
     
-    [GtkTemplate (ui = "/me/paladin/SchemeEditor/ui/create-dialog.ui")]
+    [GtkTemplate (ui = "/me/paladin/SchemeEditor/ui/dialog-create.ui")]
     public class CreateDialog : Gtk.Dialog {
         private unowned UpdateFunc update_func;
         private string[] scheme_ids;
