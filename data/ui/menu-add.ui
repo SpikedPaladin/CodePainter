@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<interface>
+  <requires lib="gtk+" version="3.24"/>
+  <menu id="menu">
+    <item>
+      <attribute name="label" translatable="yes">_Create new</attribute>
+      <attribute name="action">win.create</attribute>
+    </item>
+    <item>
+      <attribute name="label" translatable="yes">_Import</attribute>
+      <attribute name="action">win.import</attribute>
+    </item>
+  </menu>
+</interface>

@@ -35,10 +35,12 @@
         <property name="title" translatable="yes">Scheme Editor</property>
         <property name="show-close-button">True</property>
         <child>
-          <object class="GtkButton" id="button_create">
+          <object class="GtkMenuButton" id="button_create">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
+            <property name="focus-on-click">False</property>
             <property name="receives-default">True</property>
+            <property name="relief">none</property>
             <child>
               <object class="GtkImage">
                 <property name="visible">True</property>
