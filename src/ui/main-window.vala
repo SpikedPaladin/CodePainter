@@ -32,7 +32,10 @@ namespace SchemeEditor {
             home_page.scheme_selected.connect(id => switch_page(id));
             home_page.toggle_selection.connect(toggle_selection);
             
-            button_select.clicked.connect(() => home_page.toggle_selection(true));
+            button_select.clicked.connect(() => {
+                if (!home_page.is_empty())
+                    home_page.toggle_selection(true);
+            });
             button_cancel.clicked.connect(() => home_page.toggle_selection(false));
             button_save.clicked.connect(() => editor_page.save_scheme());
             button_close.clicked.connect(() => switch_page());
@@ -59,7 +62,7 @@ namespace SchemeEditor {
             menu = builder.get_object("menu") as MenuModel;
             
             action = new SimpleAction("create", null);
-            action.activate.connect(() => new CreateDialog(this, home_page.update_page).present());
+            action.activate.connect(home_page.create_scheme);
             add_action(action);
             
             action = new SimpleAction("import", null);

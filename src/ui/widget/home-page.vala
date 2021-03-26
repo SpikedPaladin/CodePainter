@@ -34,6 +34,11 @@ namespace SchemeEditor {
             }
         }
         
+        [GtkCallback]
+        public void create_scheme() {
+            new CreateDialog(get_toplevel() as Gtk.Window, update_page).present();
+        }
+        
         public void update_page() {
             toggle_selection(false);
             Gtk.SourceStyleSchemeManager.get_default().force_rescan();
@@ -48,6 +53,10 @@ namespace SchemeEditor {
             }
             revealer.reveal_child = selecting;
             list.toggle_selection(selecting);
+        }
+        
+        public bool is_empty() {
+            return list.get_children().is_empty();
         }
         
         [GtkCallback]

@@ -22,8 +22,11 @@ namespace SchemeEditor {
             Gdk.Event* ev = (Gdk.Event*) event;
             if (!selecting && ev->triggers_context_menu()) {
                 var row = get_row_at_y((int) event.y) as Row;
-                row.selected = true;
-                return true;
+                
+                if (row != null) {
+                    row.selected = true;
+                    return true;
+                }
             }
             return base.button_press_event(event);
         }
