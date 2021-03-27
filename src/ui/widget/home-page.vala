@@ -10,6 +10,8 @@ namespace SchemeEditor {
         private unowned Gtk.Revealer revealer;
         [GtkChild]
         private unowned Gtk.Button button_trash;
+        [GtkChild]
+        private unowned Gtk.Button button_export;
         
         construct {
             list.selected.connect((count) => {
@@ -17,6 +19,7 @@ namespace SchemeEditor {
                     toggle_selection(true);
                 }
                 button_trash.set_sensitive(count > 0);
+                button_export.set_sensitive(count > 0);
             });
             list.open_scheme.connect((id) => scheme_selected(id));
             load_schemes();
@@ -50,6 +53,7 @@ namespace SchemeEditor {
         public signal void toggle_selection(bool selecting) {
             if (!selecting) {
                 button_trash.set_sensitive(false);
+                button_export.set_sensitive(false);
             }
             revealer.reveal_child = selecting;
             list.toggle_selection(selecting);
@@ -67,6 +71,41 @@ namespace SchemeEditor {
                         list.get_selected(),
                         () => update_page()
                 ).present();
+            }
+        }
+        
+        [GtkCallback]
+        private void export_clicked() {
+            var file_chooser = new Gtk.FileChooserDialog(
+                "Save",
+                get_toplevel() as Gtk.Window,
+                Gtk.FileChooserAction.SELECT_FOLDER,
+                "_Cancel",
+                Gtk.ResponseType.CANCEL,
+                "_Save",
+                Gtk.ResponseType.OK
+            );
+            
+            file_chooser.response.connect((dialog, response) => {
+                var save_dialog = dialog as Gtk.FileChooserDialog;
+                
+                if (response == Gtk.ResponseType.OK)
+                    export_selected(save_dialog.get_file().get_path());
+                
+                dialog.destroy();
+            });
+            file_chooser.show();
+        }
+        
+        private void export_selected(string path) {
+            var manager = Gtk.SourceStyleSchemeManager.get_default();
+            foreach (var id in list.get_selected()) {
+                var scheme_file = File.new_for_path(manager.get_scheme(id).get_filename());
+                try {
+                    scheme_file.copy(File.new_for_path(path + "/" + scheme_file.get_basename()), FileCopyFlags.NONE);
+                } catch (Error e) {
+                    warning(e.message);
+                }
             }
         }
         
