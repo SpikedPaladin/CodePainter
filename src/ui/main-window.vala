@@ -39,6 +39,12 @@ namespace SchemeEditor {
             button_cancel.clicked.connect(() => home_page.toggle_selection(false));
             button_save.clicked.connect(() => editor_page.save_scheme());
             button_close.clicked.connect(() => switch_page());
+            
+            header.bind_property("show-close-button", button_create, "visible");
+            header.bind_property("show-close-button", button_select, "visible");
+            header.bind_property("show-close-button", button_cancel, "visible", BindingFlags.INVERT_BOOLEAN);
+            header.bind_property("show-close-button", button_menu, "visible");
+            
             setup_menu();
         }
         
@@ -156,11 +162,6 @@ namespace SchemeEditor {
                 header.get_style_context().remove_class("selection-mode");
             }
             header.show_close_button = !selecting;
-            
-            button_create.visible = !selecting;
-            button_select.visible = !selecting;
-            button_cancel.visible = selecting;
-            button_menu.visible = !selecting;
         }
         
         public void switch_page(string? id = null) {
