@@ -90,6 +90,7 @@
             <property name="label" translatable="yes">Cancel</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
+            <accelerator key="Escape" signal="clicked"/>
           </object>
           <packing>
             <property name="pack-type">end</property>
