@@ -92,6 +92,8 @@ namespace SchemeEditor {
                     FontUtil.update_font(provider, settings.get_string("font"))
             );
             
+            settings.changed["default-language"].connect(() => on_language_selected());
+            
             preview.get_style_context().add_provider(provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
             FontUtil.update_font(provider, settings.get_string("font"));
             
