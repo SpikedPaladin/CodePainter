@@ -87,11 +87,20 @@
           </packing>
         </child>
         <child>
-          <object class="GtkImage">
+          <object class="GtkRevealer" id="open_revealer">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="margin-end">8</property>
-            <property name="icon-name">go-next-symbolic</property>
+            <property name="transition-type">crossfade</property>
+            <property name="reveal-child">True</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="valign">center</property>
+                <property name="margin-end">8</property>
+                <property name="icon-name">go-next-symbolic</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>

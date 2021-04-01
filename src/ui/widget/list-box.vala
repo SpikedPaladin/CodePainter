@@ -80,12 +80,15 @@ namespace SchemeEditor {
             private unowned Gtk.Revealer revealer;
             [GtkChild]
             private unowned Gtk.CheckButton check_selected;
+            [GtkChild]
+            private unowned Gtk.Revealer open_revealer;
             
             public Row.from_scheme(Gtk.SourceStyleScheme scheme) {
                 id = scheme.get_id();
                 row_title.set_text(scheme.get_name());
                 row_subtitle.set_text("ID: " + id);
                 check_selected.bind_property("active", this, "selected", BindingFlags.BIDIRECTIONAL);
+                revealer.bind_property("reveal-child", open_revealer, "reveal-child", BindingFlags.INVERT_BOOLEAN);
             }
             
             public void select(bool selecting) {
