@@ -68,6 +68,18 @@
           </packing>
         </child>
         <child>
+          <object class="GtkButton" id="button_cancel">
+            <property name="label" translatable="yes">Cancel</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <accelerator key="Escape" signal="clicked"/>
+          </object>
+          <packing>
+            <property name="pack-type">end</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkMenuButton" id="button_menu">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
@@ -79,18 +91,6 @@
             <style>
               <class name="image-button"/>
             </style>
-          </object>
-          <packing>
-            <property name="pack-type">end</property>
-            <property name="position">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="button_cancel">
-            <property name="label" translatable="yes">Cancel</property>
-            <property name="can-focus">True</property>
-            <property name="receives-default">True</property>
-            <accelerator key="Escape" signal="clicked"/>
           </object>
           <packing>
             <property name="pack-type">end</property>
