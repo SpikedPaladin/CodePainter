@@ -200,6 +200,7 @@
         <property name="visible">True</property>
         <property name="can-focus">False</property>
         <property name="orientation">vertical</property>
+        <property name="spacing">8</property>
         <child>
           <object class="GtkBox">
             <property name="visible">True</property>
@@ -533,44 +534,19 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox">
+          <object class="GtkScrolledWindow">
             <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="orientation">vertical</property>
+            <property name="can-focus">True</property>
+            <property name="shadow-type">in</property>
             <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="halign">start</property>
-                <property name="label" translatable="yes">Sample</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkScrolledWindow">
+              <object class="GtkSourceView" id="preview">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
-                <property name="shadow-type">in</property>
-                <child>
-                  <object class="GtkSourceView" id="preview">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="left-margin">2</property>
-                    <property name="right-margin">2</property>
-                    <property name="show-line-numbers">True</property>
-                    <property name="highlight-current-line">True</property>
-                  </object>
-                </child>
+                <property name="left-margin">2</property>
+                <property name="right-margin">2</property>
+                <property name="show-line-numbers">True</property>
+                <property name="highlight-current-line">True</property>
               </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
             </child>
           </object>
           <packing>
