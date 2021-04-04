@@ -4,6 +4,8 @@ namespace SchemeEditor {
     
     [GtkTemplate (ui = "/me/paladin/SchemeEditor/ui/window-main.ui")]
     public class MainWindow : Gtk.ApplicationWindow {
+        private Settings settings;
+        
         [GtkChild]
         private unowned Gtk.HeaderBar header;
         [GtkChild]
@@ -28,6 +30,10 @@ namespace SchemeEditor {
         
         public MainWindow(Gtk.Application application) {
             Object(application: application);
+            
+            settings = new Settings("me.paladin.SchemeEditor");
+            settings.changed["night-mode"].connect(update_theme);
+            update_theme();
             
             home_page.scheme_selected.connect(id => switch_page(id));
             home_page.toggle_selection.connect(toggle_selection);
@@ -76,6 +82,11 @@ namespace SchemeEditor {
             add_action(action);
             
             button_create.set_menu_model(menu);
+        }
+        
+        private void update_theme() {
+            var night_mode = settings.get_boolean("night-mode");
+            Gtk.Settings.get_default().gtk_application_prefer_dark_theme = night_mode;
         }
         
         private void import_activated() {

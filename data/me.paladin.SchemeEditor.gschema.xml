@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
   <schema path="/me/paladin/SchemeEditor/" id="me.paladin.SchemeEditor">
+    <key name="night-mode" type="b">
+      <default>false</default>
+      <summary>Night Mode</summary>
+      <description>Prefer dark application chrome.</description>
+    </key>
     <key name="font" type="s">
       <default>'Monospace 12'</default>
       <summary>Font</summary>

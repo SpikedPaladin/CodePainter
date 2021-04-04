@@ -22,7 +22,7 @@
           </packing>
         </child>
         <child>
-          <!-- n-columns=2 n-rows=2 -->
+          <!-- n-columns=2 n-rows=3 -->
           <object class="GtkGrid" id="grid">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
@@ -30,29 +30,14 @@
             <property name="row-spacing">12</property>
             <property name="column-spacing">6</property>
             <child>
-              <object class="GtkLabel" id="fontlabel">
+              <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="label">_Font:</property>
-                <property name="use-underline">True</property>
-                <property name="mnemonic-widget">font</property>
-                <property name="xalign">1</property>
+                <property name="label" translatable="yes">Default language:</property>
               </object>
               <packing>
                 <property name="left-attach">0</property>
-                <property name="top-attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkFontButton" id="font">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="receives-default">False</property>
-                <property name="font">Sans 12</property>
-              </object>
-              <packing>
-                <property name="left-attach">1</property>
-                <property name="top-attach">0</property>
+                <property name="top-attach">1</property>
               </packing>
             </child>
             <child>
@@ -76,14 +61,51 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel">
+              <object class="GtkFontButton" id="font">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="label" translatable="yes">Default language:</property>
+                <property name="receives-default">False</property>
+                <property name="font">Sans 12</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="fontlabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label">_Font:</property>
+                <property name="use-underline">True</property>
+                <property name="xalign">1</property>
               </object>
               <packing>
                 <property name="left-attach">0</property>
-                <property name="top-attach">1</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Night mode:</property>
+                <property name="xalign">1</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSwitch" id="night_mode">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="halign">start</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">2</property>
               </packing>
             </child>
           </object>

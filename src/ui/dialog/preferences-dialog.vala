@@ -8,6 +8,9 @@ namespace SchemeEditor {
         private unowned Gtk.FontButton font;
         
         [GtkChild]
+        private unowned Gtk.Switch night_mode;
+        
+        [GtkChild]
         private unowned Gtk.ComboBoxText default_language;
         
         public PreferencesDialog(Gtk.Window window) {
@@ -19,6 +22,7 @@ namespace SchemeEditor {
             settings = new Settings("me.paladin.SchemeEditor");
             
             settings.bind("font", font, "font", SettingsBindFlags.DEFAULT);
+            settings.bind("night-mode", night_mode, "active", SettingsBindFlags.DEFAULT);
             settings.bind("default-language", default_language, "active-id", SettingsBindFlags.DEFAULT);
         }
     }
