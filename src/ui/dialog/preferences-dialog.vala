@@ -2,8 +2,6 @@ namespace SchemeEditor {
     
     [GtkTemplate (ui = "/me/paladin/SchemeEditor/ui/dialog-preferences.ui")]
     public class PreferencesDialog : Gtk.Dialog {
-        private Settings settings;
-        
         [GtkChild]
         private unowned Gtk.FontButton font;
         
@@ -19,11 +17,9 @@ namespace SchemeEditor {
                     use_header_bar: 1
             );
             
-            settings = new Settings("me.paladin.SchemeEditor");
-            
-            settings.bind("font", font, "font", SettingsBindFlags.DEFAULT);
-            settings.bind("night-mode", night_mode, "active", SettingsBindFlags.DEFAULT);
-            settings.bind("default-language", default_language, "active-id", SettingsBindFlags.DEFAULT);
+            Application.settings.bind("font", font, "font", SettingsBindFlags.DEFAULT);
+            Application.settings.bind("night-mode", night_mode, "active", SettingsBindFlags.DEFAULT);
+            Application.settings.bind("default-language", default_language, "active-id", SettingsBindFlags.DEFAULT);
         }
     }
 }

@@ -18,7 +18,6 @@ namespace SchemeEditor {
         
         private Samples samples = new Samples();
         private HashMap<string, Style> styles;
-        private Settings settings;
         
         private string current_language;
         private string current_scheme;
@@ -85,17 +84,16 @@ namespace SchemeEditor {
         private Gtk.SourceBuffer buffer;
         
         construct {
-            settings = new Settings("me.paladin.SchemeEditor");
             var provider = new Gtk.CssProvider();
             
-            settings.changed["font"].connect(() =>
-                    FontUtil.update_font(provider, settings.get_string("font"))
+            Application.settings.changed["font"].connect(() =>
+                    FontUtil.update_font(provider, Application.settings.get_string("font"))
             );
             
-            settings.changed["default-language"].connect(() => on_language_selected());
+            Application.settings.changed["default-language"].connect(() => on_language_selected());
             
             preview.get_style_context().add_provider(provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-            FontUtil.update_font(provider, settings.get_string("font"));
+            FontUtil.update_font(provider, Application.settings.get_string("font"));
             
             buffer = new Gtk.SourceBuffer(null);
             buffer.set_max_undo_levels(0);
@@ -257,7 +255,7 @@ namespace SchemeEditor {
                     buffer.set_language(language_manager.get_language(current_language));
                     buffer.text = samples.list[current_language];
                 } else {
-                    var default_language = settings.get_string("default-language");
+                    var default_language = Application.settings.get_string("default-language");
                     buffer.set_language(language_manager.get_language(default_language));
                     buffer.text = samples.list[default_language];
                 }
