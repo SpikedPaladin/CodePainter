@@ -32,9 +32,7 @@ namespace SchemeEditor {
         }
         
         public void clear() {
-            foreach (var child in get_children()) {
-                child.destroy();
-            }
+            @foreach((element) => remove(element));
         }
         
         public void toggle_selection(bool selecting) {
