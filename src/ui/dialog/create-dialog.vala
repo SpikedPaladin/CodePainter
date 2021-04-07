@@ -14,7 +14,7 @@ namespace SchemeEditor {
         [GtkChild]
         private unowned Gtk.Entry entry_name;
         [GtkChild]
-        private unowned Gtk.Revealer revealer;
+        private unowned Gtk.Revealer error_revealer;
         
         public CreateDialog(Gtk.Window window, owned UpdateFunc? update_func = null) {
             Object(
@@ -34,13 +34,13 @@ namespace SchemeEditor {
             if (entry_id.text != "") {
                 if (!(entry_id.text in scheme_ids)) {
                     entry_id.get_style_context().remove_class("error");
-                    revealer.reveal_child = false;
+                    error_revealer.reveal_child = false;
                     if (entry_name.text != "") {
                         button_save.set_sensitive(true);
                     }
                 } else {
                     entry_id.get_style_context().add_class("error");
-                    revealer.reveal_child = true;
+                    error_revealer.reveal_child = true;
                     button_save.set_sensitive(false);
                 }
             } else {
