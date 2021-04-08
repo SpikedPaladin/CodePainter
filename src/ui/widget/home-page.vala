@@ -26,7 +26,7 @@ namespace SchemeEditor {
         }
         
         private void load_schemes() {
-            var manager = Gtk.SourceStyleSchemeManager.get_default();
+            var manager = Application.scheme_manager;
             
             foreach (var id in manager.get_scheme_ids()) {
                 var scheme = manager.get_scheme(id);
@@ -44,7 +44,7 @@ namespace SchemeEditor {
         
         public void update_page() {
             toggle_selection(false);
-            Gtk.SourceStyleSchemeManager.get_default().force_rescan();
+            Application.scheme_manager.force_rescan();
             
             list.clear();
             load_schemes();
@@ -98,9 +98,8 @@ namespace SchemeEditor {
         }
         
         private void export_selected(string path) {
-            var manager = Gtk.SourceStyleSchemeManager.get_default();
             foreach (var id in list.get_selected()) {
-                var scheme_file = File.new_for_path(manager.get_scheme(id).get_filename());
+                var scheme_file = File.new_for_path(Application.scheme_manager.get_scheme(id).get_filename());
                 try {
                     scheme_file.copy(File.new_for_path(path + "/" + scheme_file.get_basename()), FileCopyFlags.NONE);
                 } catch (Error e) {

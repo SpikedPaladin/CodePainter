@@ -21,9 +21,8 @@ namespace SchemeEditor {
             
             this.update_func = update_func;
             
-            var manager = Gtk.SourceStyleSchemeManager.get_default();
             foreach (var id in ids) {
-                files += File.new_for_path(manager.get_scheme(id).get_filename());
+                files += File.new_for_path(Application.scheme_manager.get_scheme(id).get_filename());
             }
             
             label_info.set_text(label_info.get_text().replace("%s", string.joinv("\n", ids)));

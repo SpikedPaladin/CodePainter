@@ -12,7 +12,7 @@ namespace SchemeEditor {
         
         public unowned Gtk.SourceStyleSchemeManager scheme_manager {
             get {
-                return Gtk.SourceStyleSchemeManager.get_default();
+                return Application.scheme_manager;
             }
         }
         

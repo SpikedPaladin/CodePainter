@@ -23,10 +23,10 @@ namespace SchemeEditor {
             );
             
             this.update_func = update_func;
-            scheme_ids = Gtk.SourceStyleSchemeManager.get_default().get_scheme_ids();
+            scheme_ids = Application.scheme_manager.get_scheme_ids();
             
             // Find save path
-            save_path = Gtk.SourceStyleSchemeManager.get_default().get_search_path()[0];
+            save_path = Application.scheme_manager.get_search_path()[0];
         }
         
         [GtkCallback]
