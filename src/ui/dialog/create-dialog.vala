@@ -1,3 +1,5 @@
+using Gee;
+
 namespace SchemeEditor {
     
     [GtkTemplate (ui = "/me/paladin/SchemeEditor/ui/dialog-create.ui")]
@@ -15,6 +17,14 @@ namespace SchemeEditor {
         private unowned Gtk.Entry entry_name;
         [GtkChild]
         private unowned Gtk.Revealer error_revealer;
+        [GtkChild]
+        private unowned Gtk.Revealer add_revealer;
+        [GtkChild]
+        private unowned Gtk.CheckButton add_check;
+        [GtkChild]
+        private unowned Gtk.ComboBox add_scheme;
+        [GtkChild]
+        private unowned Gtk.ListStore scheme_store;
         
         public CreateDialog(Gtk.Window window, owned UpdateFunc? update_func = null) {
             Object(
@@ -24,9 +34,16 @@ namespace SchemeEditor {
             
             this.update_func = update_func;
             scheme_ids = Application.scheme_manager.get_scheme_ids();
+            Gtk.TreeIter iter;
+            foreach (var id in scheme_ids) {
+                scheme_store.append(out iter);
+                scheme_store.set(iter, 0, id);
+            }
             
             // Find save path
             save_path = Application.scheme_manager.get_search_path()[0];
+            
+            add_check.bind_property("active", add_revealer, "reveal-child", BindingFlags.DEFAULT);
         }
         
         [GtkCallback]
@@ -50,7 +67,13 @@ namespace SchemeEditor {
         
         public override void response(int response_id) {
             if (response_id == Gtk.ResponseType.OK) {
-                XmlUtil.write_scheme(save_path + @"/$(entry_id.text).xml", entry_id.text, entry_name.text, "", "");
+                HashMap<string, Style>? styles = null;
+                if (add_check.active && add_scheme.get_active() > -1) {
+                    var scheme = Application.scheme_manager.get_scheme(scheme_ids[add_scheme.get_active()]);
+                    styles = new HashMap<string, Style>();
+                    XmlUtil.load_styles(ref scheme, ref styles);
+                }
+                XmlUtil.write_scheme(save_path + @"/$(entry_id.text).xml", entry_id.text, entry_name.text, "", "", styles);
                 update_func();
             }
             destroy();
