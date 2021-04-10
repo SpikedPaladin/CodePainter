@@ -15,6 +15,18 @@ namespace SchemeEditor {
         public override void activate() {
             window = new MainWindow(this);
             window.present();
+            
+            setup_accels();
+        }
+        
+        public void setup_accels() {
+            // Main menu
+            set_accels_for_action("win.preferences", { "<Primary>comma" });
+            set_accels_for_action("win.inspector", { "<Primary><Shift>I" });
+            
+            // Create menu
+            set_accels_for_action("win.create", { "<Primary>N" });
+            set_accels_for_action("win.import", { "<Primary>I" });
         }
     }
 }
