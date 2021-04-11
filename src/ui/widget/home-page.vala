@@ -92,7 +92,7 @@ namespace SchemeEditor {
                 if (response == Gtk.ResponseType.OK)
                     export_selected(save_dialog.get_file().get_path());
                 
-                dialog.destroy();
+                dialog.close();
             });
             file_chooser.show();
         }

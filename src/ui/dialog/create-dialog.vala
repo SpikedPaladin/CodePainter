@@ -76,7 +76,7 @@ namespace SchemeEditor {
                 XmlUtil.write_scheme(save_path + @"/$(entry_id.text).xml", entry_id.text, entry_name.text, "", "", styles);
                 update_func();
             }
-            destroy();
+            close();
         }
         
         public delegate void UpdateFunc();

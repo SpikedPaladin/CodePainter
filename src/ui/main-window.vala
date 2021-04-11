@@ -114,7 +114,7 @@ namespace SchemeEditor {
                 if (response == Gtk.ResponseType.OK)
                     import_file(open_dialog.get_file());
                 
-                dialog.destroy();
+                dialog.close();
             });
             file_chooser.show();
         }
@@ -127,7 +127,7 @@ namespace SchemeEditor {
                     Gtk.ButtonsType.OK,
                     null
             );
-            dialog.response.connect(() => dialog.destroy());
+            dialog.response.connect(() => dialog.close());
             // Don't import scheme from search path
             if (!(file.get_parent().get_path() in editor_page.scheme_manager.get_search_path())) {
                 var scheme_id = XmlUtil.get_scheme_id(file.get_path());

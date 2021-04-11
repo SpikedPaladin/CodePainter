@@ -49,7 +49,7 @@ namespace SchemeEditor {
                 }
                 update_func();
             }
-            destroy();
+            close();
         }
         
         public delegate void UpdateFunc();
