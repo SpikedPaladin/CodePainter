@@ -13,6 +13,7 @@ project_sources = files(
     'util/samples.vala',
     'util/xml-util.vala',
     'util/font-util.vala',
+    'util/builder-util.vala',
     
     'core/application.vala',
     
