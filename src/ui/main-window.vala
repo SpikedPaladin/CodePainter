@@ -53,8 +53,7 @@ namespace SchemeEditor {
         
         private void setup_menu() {
             // Main button menu
-            var builder = new Gtk.Builder.from_resource("/me/paladin/SchemeEditor/ui/menu-main.ui");
-            var menu = builder.get_object("menu") as MenuModel;
+            var menu = BuilderUtil.load_object<MenuModel>("ui/menu-main.ui", "menu");
             
             var action = new SimpleAction("preferences", null);
             action.activate.connect(() => new PreferencesDialog(this).present());
@@ -67,8 +66,7 @@ namespace SchemeEditor {
             button_menu.set_menu_model(menu);
             
             // Create button menu
-            builder = new Gtk.Builder.from_resource("/me/paladin/SchemeEditor/ui/menu-add.ui");
-            menu = builder.get_object("menu") as MenuModel;
+            menu = BuilderUtil.load_object<MenuModel>("ui/menu-add.ui", "menu");
             
             action = new SimpleAction("create", null);
             action.activate.connect(home_page.create_scheme);
