@@ -1,8 +1,8 @@
 using Gee;
 
-namespace SchemeEditor {
+namespace CodePainter {
     
-    [GtkTemplate (ui = "/me/paladin/SchemeEditor/ui/dialog-create.ui")]
+    [GtkTemplate (ui = "/me/paladin/CodePainter/ui/dialog-create.ui")]
     public class CreateDialog : Gtk.Dialog {
         private unowned UpdateFunc update_func;
         private string[] scheme_ids;

@@ -1,8 +1,8 @@
 using Gee;
 
-namespace SchemeEditor {
+namespace CodePainter {
     
-    [GtkTemplate (ui = "/me/paladin/SchemeEditor/ui/window-main.ui")]
+    [GtkTemplate (ui = "/me/paladin/CodePainter/ui/window-main.ui")]
     public class MainWindow : Gtk.ApplicationWindow {
         [GtkChild]
         private unowned Gtk.HeaderBar header;
@@ -191,7 +191,7 @@ namespace SchemeEditor {
                 editor_page.close_scheme();
                 home_page.update_page();
                 
-                set_title("Scheme Editor");
+                set_title("Code Painter");
             }
         }
     }

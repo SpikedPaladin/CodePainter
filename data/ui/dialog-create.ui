@@ -8,7 +8,7 @@
       <column type="gchararray"/>
     </columns>
   </object>
-  <template class="SchemeEditorCreateDialog" parent="GtkDialog">
+  <template class="CodePainterCreateDialog" parent="GtkDialog">
     <property name="can-focus">False</property>
     <property name="border-width">18</property>
     <property name="resizable">False</property>

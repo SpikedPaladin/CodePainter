@@ -2,7 +2,7 @@
 <!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.24"/>
-  <template class="SchemeEditorHomePage" parent="GtkBox">
+  <template class="CodePainterHomePage" parent="GtkBox">
     <property name="can-focus">False</property>
     <property name="orientation">vertical</property>
     <child>
@@ -30,7 +30,7 @@
                     <property name="margin-bottom">32</property>
                     <property name="label-xalign">0</property>
                     <child>
-                      <object class="SchemeEditorListBox" id="list">
+                      <object class="CodePainterListBox" id="list">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="selection-mode">none</property>

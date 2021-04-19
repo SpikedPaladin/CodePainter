@@ -1,1 +1,1 @@
-i18n.gettext('scheme-editor', preset: 'glib')
+i18n.gettext('code-painter', preset: 'glib')

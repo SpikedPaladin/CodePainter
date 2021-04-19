@@ -1,8 +1,8 @@
 using Gee;
 
-namespace SchemeEditor {
+namespace CodePainter {
     
-    [GtkTemplate (ui = "/me/paladin/SchemeEditor/ui/editor-page.ui")]
+    [GtkTemplate (ui = "/me/paladin/CodePainter/ui/editor-page.ui")]
     public class EditorPage : Gtk.Box {
         public unowned Gtk.SourceLanguageManager language_manager {
             get {
@@ -101,7 +101,7 @@ namespace SchemeEditor {
             
             styles = new HashMap<string, Style>();
             
-            temp_path = @"$(Environment.get_tmp_dir())/SchemeEditor";
+            temp_path = @"$(Environment.get_tmp_dir())/CodePainter";
             if (!FileUtils.test(temp_path, FileTest.EXISTS)) {
                 try {
                     File dir = File.new_for_path(temp_path);

@@ -1,4 +1,4 @@
-namespace SchemeEditor {
+namespace CodePainter {
     
     public class Style {
         public string? foreground { get; set; }

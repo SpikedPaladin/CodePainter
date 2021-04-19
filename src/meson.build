@@ -28,7 +28,7 @@ project_sources = files(
     'ui/widget/editor-page.vala'
 )
 
-executable('scheme-editor',
+executable('code-painter',
     project_resources,
     project_sources,
     vala_args: '--target-glib=2.50',

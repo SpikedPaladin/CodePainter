@@ -89,7 +89,7 @@
       <column type="gchararray"/>
     </columns>
   </object>
-  <template class="SchemeEditorEditorPage" parent="GtkBox">
+  <template class="CodePainterEditorPage" parent="GtkBox">
     <property name="can-focus">False</property>
     <property name="border-width">6</property>
     <property name="spacing">8</property>

@@ -1,6 +1,6 @@
 desktop_file = i18n.merge_file(
-    input: 'me.paladin.SchemeEditor.desktop.in',
-    output: 'me.paladin.SchemeEditor.desktop',
+    input: 'me.paladin.CodePainter.desktop.in',
+    output: 'me.paladin.CodePainter.desktop',
     type: 'desktop',
     po_dir: '../po',
     install: true,
@@ -15,8 +15,8 @@ if desktop_utils.found()
 endif
 
 appstream_file = i18n.merge_file(
-    input: 'me.paladin.SchemeEditor.appdata.xml.in',
-    output: 'me.paladin.SchemeEditor.appdata.xml',
+    input: 'me.paladin.CodePainter.appdata.xml.in',
+    output: 'me.paladin.CodePainter.appdata.xml',
     po_dir: '../po',
     install: true,
     install_dir: join_paths(datadir, 'appdata')
@@ -29,7 +29,7 @@ if appstream_util.found()
     )
 endif
 
-install_data('me.paladin.SchemeEditor.gschema.xml',
+install_data('me.paladin.CodePainter.gschema.xml',
     install_dir: join_paths(datadir, 'glib-2.0', 'schemas')
 )
 
@@ -44,6 +44,6 @@ gnome = import('gnome')
 
 project_resources = gnome.compile_resources(
     'resources',
-    'me.paladin.SchemeEditor.gresource.xml',
+    'me.paladin.CodePainter.gresource.xml',
     c_name: 'resources'
 )

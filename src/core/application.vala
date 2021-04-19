@@ -1,4 +1,4 @@
-namespace SchemeEditor {
+namespace CodePainter {
     
     public class Application : Gtk.Application {
         public static Gtk.SourceStyleSchemeManager scheme_manager;
@@ -6,10 +6,10 @@ namespace SchemeEditor {
         private MainWindow window;
         
         public Application() {
-            application_id = "me.paladin.SchemeEditor";
+            application_id = "me.paladin.CodePainter";
             
             scheme_manager = Gtk.SourceStyleSchemeManager.get_default();
-            settings = new Settings("me.paladin.SchemeEditor");
+            settings = new Settings("me.paladin.CodePainter");
         }
         
         public override void activate() {

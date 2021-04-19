@@ -1,6 +1,6 @@
-namespace SchemeEditor {
+namespace CodePainter {
     
-    [GtkTemplate (ui = "/me/paladin/SchemeEditor/ui/dialog-preferences.ui")]
+    [GtkTemplate (ui = "/me/paladin/CodePainter/ui/dialog-preferences.ui")]
     public class PreferencesDialog : Gtk.Dialog {
         [GtkChild]
         private unowned Gtk.FontButton font;

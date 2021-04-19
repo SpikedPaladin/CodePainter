@@ -1,6 +1,6 @@
-namespace SchemeEditor {
+namespace CodePainter {
     
-    [GtkTemplate (ui = "/me/paladin/SchemeEditor/ui/home-page.ui")]
+    [GtkTemplate (ui = "/me/paladin/CodePainter/ui/home-page.ui")]
     public class HomePage : Gtk.Box {
         
         [GtkChild]

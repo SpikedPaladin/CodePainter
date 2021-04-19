@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=scheme-editor
-Exec=scheme-editor
+Name=Code Painter
+Exec=code-painter
 Terminal=false
 Type=Application
 Categories=GTK;

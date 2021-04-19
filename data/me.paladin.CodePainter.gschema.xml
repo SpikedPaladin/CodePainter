@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-  <schema path="/me/paladin/SchemeEditor/" id="me.paladin.SchemeEditor">
+  <schema path="/me/paladin/CodePainter/" id="me.paladin.CodePainter">
     <key name="night-mode" type="b">
       <default>false</default>
       <summary>Night Mode</summary>

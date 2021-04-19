@@ -1,6 +1,6 @@
-namespace SchemeEditor {
+namespace CodePainter {
     
-    [GtkTemplate (ui = "/me/paladin/SchemeEditor/ui/dialog-delete.ui")]
+    [GtkTemplate (ui = "/me/paladin/CodePainter/ui/dialog-delete.ui")]
     public class DeleteDialog : Gtk.Dialog {
         private unowned UpdateFunc update_func;
         private File[] files;

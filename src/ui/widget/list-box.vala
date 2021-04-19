@@ -1,4 +1,4 @@
-namespace SchemeEditor {
+namespace CodePainter {
     
     public class ListBox : Gtk.ListBox {
         public bool selecting;
@@ -65,7 +65,7 @@ namespace SchemeEditor {
         public signal void selected(int count);
         public signal void open_scheme(string id);
         
-        [GtkTemplate (ui = "/me/paladin/SchemeEditor/ui/scheme-row.ui")]
+        [GtkTemplate (ui = "/me/paladin/CodePainter/ui/scheme-row.ui")]
         public class Row : Gtk.ListBoxRow {
             public string id { get; construct set; }
             public bool selected { get; set; }

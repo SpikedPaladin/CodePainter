@@ -1,6 +1,6 @@
 using Gee;
 
-namespace SchemeEditor {
+namespace CodePainter {
     
     public class Samples {
         public HashMap<string, string> list { get; private set; }
