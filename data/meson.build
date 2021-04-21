@@ -4,7 +4,7 @@ desktop_file = i18n.merge_file(
     type: 'desktop',
     po_dir: '../po',
     install: true,
-    install_dir: join_paths(datadir, 'applications')
+    install_dir: datadir / 'applications'
 )
 
 desktop_utils = find_program('desktop-file-validate', required: false)
@@ -19,7 +19,7 @@ appstream_file = i18n.merge_file(
     output: app_id + '.appdata.xml',
     po_dir: '../po',
     install: true,
-    install_dir: join_paths(datadir, 'appdata')
+    install_dir: datadir / 'appdata'
 )
 
 appstream_util = find_program('appstream-util', required: false)
@@ -30,7 +30,7 @@ if appstream_util.found()
 endif
 
 install_data(app_id + '.gschema.xml',
-    install_dir: join_paths(datadir, 'glib-2.0', 'schemas')
+    install_dir: datadir / 'glib-2.0' / 'schemas'
 )
 
 compile_schemas = find_program('glib-compile-schemas', required: false)
@@ -47,3 +47,5 @@ project_resources = gnome.compile_resources(
     app_id + '.gresource.xml',
     c_name: 'resources'
 )
+
+subdir('icons')
