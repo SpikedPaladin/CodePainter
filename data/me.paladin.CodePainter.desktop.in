@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Code Painter
 Exec=code-painter
+Icon=me.paladin.CodePainter
 Terminal=false
 Type=Application
 Categories=GTK;
