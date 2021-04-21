@@ -4,6 +4,7 @@ project('code-painter', ['c', 'vala'],
   default_options: [ 'warning_level=2' ]
 )
 
+app_id = 'me.paladin.CodePainter'
 datadir = get_option('datadir')
 
 i18n = import('i18n')
