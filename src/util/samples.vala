@@ -444,6 +444,18 @@ namespace foo {
   };
 }
 """);
+            list.set("json",
+"""{
+    "null": null,
+    "int": 123,
+    "boolean": true,
+    "double": 1.234,
+    "big": 1.2e+100,
+    "string": "string",
+    "escape": "\"escape\"",
+    "array": [ 1, 2, 3 ]
+}
+""");
         }
     }
 }

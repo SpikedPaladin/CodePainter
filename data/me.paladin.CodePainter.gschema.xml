@@ -21,6 +21,7 @@
         <choice value="html"/>
         <choice value="glsl"/>
         <choice value="cpp"/>
+        <choice value="json"/>
       </choices>
       <default>'c'</default>
       <summary>Default language</summary>

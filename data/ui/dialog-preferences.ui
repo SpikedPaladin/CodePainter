@@ -53,6 +53,7 @@
                   <item id="html" translatable="yes">HTML</item>
                   <item id="glsl" translatable="yes">GLSL</item>
                   <item id="cpp" translatable="yes">C++</item>
+                  <item id="json" translatable="yes">JSON</item>
                 </items>
               </object>
               <packing>
