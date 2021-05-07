@@ -63,6 +63,10 @@ namespace CodePainter {
             action.activate.connect(() => Gtk.Window.set_interactive_debugging(true));
             add_action(action);
             
+            action = new SimpleAction("about", null);
+            action.activate.connect(open_about);
+            add_action(action);
+            
             button_menu.set_menu_model(menu);
             
             // Create button menu
@@ -77,6 +81,17 @@ namespace CodePainter {
             add_action(action);
             
             button_create.set_menu_model(menu);
+        }
+        
+        private void open_about() {
+            Gtk.show_about_dialog(this,
+                logo_icon_name: "me.paladin.CodePainter",
+                program_name: "Code Painter",
+                comments: "Create color schemes for GtkSourceView",
+                website: "https://github.com/SpikedPaladin/CodePainter",
+                authors: new string[] { "PaladinDev" },
+                version: "0.1"
+            );
         }
         
         private void update_theme() {
