@@ -6,7 +6,6 @@ namespace CodePainter {
     public class CreateDialog : Gtk.Dialog {
         private unowned UpdateFunc update_func;
         private string[] scheme_ids;
-        private string save_path;
         
         [GtkChild]
         private unowned Gtk.Button button_save;
@@ -40,9 +39,6 @@ namespace CodePainter {
                 scheme_store.set(iter, 0, id);
             }
             
-            // Find save path
-            save_path = Application.scheme_manager.get_search_path()[0];
-            
             add_check.bind_property("active", add_revealer, "reveal-child", BindingFlags.DEFAULT);
         }
         
@@ -73,7 +69,7 @@ namespace CodePainter {
                     styles = new HashMap<string, Style>();
                     XmlUtil.load_styles(ref scheme, ref styles);
                 }
-                XmlUtil.write_scheme(save_path + @"/$(entry_id.text).xml", entry_id.text, entry_name.text, "", "", styles);
+                XmlUtil.write_scheme(Application.scheme_path + @"/$(entry_id.text).xml", entry_id.text, entry_name.text, "", "", styles);
                 update_func();
             }
             close();

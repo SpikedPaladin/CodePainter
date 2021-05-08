@@ -151,7 +151,7 @@ namespace CodePainter {
                         return;
                     }
                     
-                    var file_name = editor_page.scheme_manager.get_search_path()[0] + "/" + file.get_basename();
+                    var file_name = Application.scheme_path + "/" + file.get_basename();
                     if (FileUtils.test(file_name, FileTest.EXISTS)) {
                         dialog.text = "Scheme with same file name exists";
                         dialog.present();

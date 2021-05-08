@@ -2,6 +2,7 @@ namespace CodePainter {
     
     public class Application : Gtk.Application {
         public static Gtk.SourceStyleSchemeManager scheme_manager;
+        public static string scheme_path;
         public static Settings settings;
         private MainWindow window;
         
@@ -10,6 +11,7 @@ namespace CodePainter {
             
             scheme_manager = Gtk.SourceStyleSchemeManager.get_default();
             settings = new Settings("me.paladin.CodePainter");
+            scheme_path = scheme_manager.get_search_path()[0];
         }
         
         public override void activate() {
