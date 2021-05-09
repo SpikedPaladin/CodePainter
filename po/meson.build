@@ -1,1 +1,1 @@
-i18n.gettext('code-painter', preset: 'glib')
+i18n.gettext(meson.project_name(), preset: 'glib')
