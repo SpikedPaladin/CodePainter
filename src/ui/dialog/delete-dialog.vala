@@ -18,12 +18,10 @@ namespace CodePainter {
                     transient_for: window,
                     use_header_bar: 1
             );
-            
             this.update_func = update_func;
             
-            foreach (var id in ids) {
+            foreach (var id in ids)
                 files += File.new_for_path(Application.scheme_manager.get_scheme(id).get_filename());
-            }
             
             label_info.set_text(label_info.get_text().replace("%s", string.joinv("\n", ids)));
         }
