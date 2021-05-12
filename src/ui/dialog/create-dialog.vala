@@ -30,9 +30,10 @@ namespace CodePainter {
                     transient_for: window,
                     use_header_bar: 1
             );
-            
             this.update_func = update_func;
+            
             scheme_ids = Application.scheme_manager.get_scheme_ids();
+            
             Gtk.TreeIter iter;
             foreach (var id in scheme_ids) {
                 scheme_store.append(out iter);
@@ -48,12 +49,13 @@ namespace CodePainter {
                 if (!(entry_id.text in scheme_ids)) {
                     entry_id.get_style_context().remove_class("error");
                     error_revealer.reveal_child = false;
-                    if (entry_name.text != "") {
+                    
+                    if (entry_name.text != "")
                         button_save.set_sensitive(true);
-                    }
                 } else {
                     entry_id.get_style_context().add_class("error");
                     error_revealer.reveal_child = true;
+                    
                     button_save.set_sensitive(false);
                 }
             } else {
