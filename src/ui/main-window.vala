@@ -29,7 +29,7 @@ namespace CodePainter {
         public MainWindow(Gtk.Application application) {
             Object(application: application);
             
-            Application.settings.changed["night-mode"].connect(update_theme);
+            settings.changed["night-mode"].connect(update_theme);
             update_theme();
             
             home_page.scheme_selected.connect(id => switch_page(id));
@@ -95,7 +95,7 @@ namespace CodePainter {
         }
         
         private void update_theme() {
-            var night_mode = Application.settings.get_boolean("night-mode");
+            var night_mode = settings.get_boolean("night-mode");
             Gtk.Settings.get_default().gtk_application_prefer_dark_theme = night_mode;
         }
         
@@ -142,16 +142,16 @@ namespace CodePainter {
             );
             dialog.response.connect(() => dialog.close());
             // Don't import scheme from search path
-            if (!(file.get_parent().get_path() in editor_page.scheme_manager.get_search_path())) {
+            if (!(file.get_parent().get_path() in scheme_manager.get_search_path())) {
                 var scheme_id = XmlUtil.get_scheme_id(file.get_path());
                 if (scheme_id != null) {
-                    if (scheme_id in editor_page.scheme_manager.get_scheme_ids()) {
+                    if (scheme_id in scheme_manager.get_scheme_ids()) {
                         dialog.text = "Scheme with same ID exists";
                         dialog.present();
                         return;
                     }
                     
-                    var file_name = Application.scheme_path + "/" + file.get_basename();
+                    var file_name = scheme_path + "/" + file.get_basename();
                     if (FileUtils.test(file_name, FileTest.EXISTS)) {
                         dialog.text = "Scheme with same file name exists";
                         dialog.present();
@@ -195,7 +195,7 @@ namespace CodePainter {
                 button_save.set_visible(true);
                 editor_page.load_scheme(id);
                 
-                set_title(editor_page.scheme_manager.get_scheme(id).get_name());
+                set_title(scheme_manager.get_scheme(id).get_name());
             } else {
                 stack.set_visible_child(home_page);
                 

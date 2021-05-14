@@ -26,7 +26,7 @@ namespace CodePainter {
         }
         
         private void load_schemes() {
-            var manager = Application.scheme_manager;
+            var manager = scheme_manager;
             
             foreach (var id in manager.get_scheme_ids()) {
                 var scheme = manager.get_scheme(id);
@@ -44,7 +44,7 @@ namespace CodePainter {
         
         public void update_page() {
             toggle_selection(false);
-            Application.scheme_manager.force_rescan();
+            scheme_manager.force_rescan();
             
             list.clear();
             load_schemes();
@@ -99,7 +99,7 @@ namespace CodePainter {
         
         private void export_selected(string path) {
             foreach (var id in list.get_selected()) {
-                var scheme_file = File.new_for_path(Application.scheme_manager.get_scheme(id).get_filename());
+                var scheme_file = File.new_for_path(scheme_manager.get_scheme(id).get_filename());
                 try {
                     scheme_file.copy(File.new_for_path(path + "/" + scheme_file.get_basename()), FileCopyFlags.NONE);
                 } catch (Error e) {

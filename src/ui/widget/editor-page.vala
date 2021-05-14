@@ -10,12 +10,6 @@ namespace CodePainter {
             }
         }
         
-        public unowned Gtk.SourceStyleSchemeManager scheme_manager {
-            get {
-                return Application.scheme_manager;
-            }
-        }
-        
         private Samples samples = new Samples();
         private HashMap<string, Style> styles;
         
@@ -86,14 +80,14 @@ namespace CodePainter {
         construct {
             var provider = new Gtk.CssProvider();
             
-            Application.settings.changed["font"].connect(() =>
-                    FontUtil.update_font(provider, Application.settings.get_string("font"))
+            settings.changed["font"].connect(() =>
+                    FontUtil.update_font(provider, settings.get_string("font"))
             );
             
-            Application.settings.changed["default-language"].connect(() => on_language_selected());
+            settings.changed["default-language"].connect(() => on_language_selected());
             
             preview.get_style_context().add_provider(provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-            FontUtil.update_font(provider, Application.settings.get_string("font"));
+            FontUtil.update_font(provider, settings.get_string("font"));
             
             buffer = new Gtk.SourceBuffer(null);
             buffer.set_max_undo_levels(0);
@@ -255,7 +249,7 @@ namespace CodePainter {
                     buffer.set_language(language_manager.get_language(current_language));
                     buffer.text = samples.list[current_language];
                 } else {
-                    var default_language = Application.settings.get_string("default-language");
+                    var default_language = settings.get_string("default-language");
                     buffer.set_language(language_manager.get_language(default_language));
                     buffer.text = samples.list[default_language];
                 }

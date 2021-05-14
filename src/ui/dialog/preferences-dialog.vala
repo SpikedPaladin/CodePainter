@@ -17,9 +17,9 @@ namespace CodePainter {
                     use_header_bar: 1
             );
             
-            Application.settings.bind("font", font, "font", SettingsBindFlags.DEFAULT);
-            Application.settings.bind("night-mode", night_mode, "active", SettingsBindFlags.DEFAULT);
-            Application.settings.bind("default-language", default_language, "active-id", SettingsBindFlags.DEFAULT);
+            settings.bind("font", font, "font", SettingsBindFlags.DEFAULT);
+            settings.bind("night-mode", night_mode, "active", SettingsBindFlags.DEFAULT);
+            settings.bind("default-language", default_language, "active-id", SettingsBindFlags.DEFAULT);
         }
     }
 }

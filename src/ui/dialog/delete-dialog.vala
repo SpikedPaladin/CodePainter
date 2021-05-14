@@ -21,7 +21,7 @@ namespace CodePainter {
             this.update_func = update_func;
             
             foreach (var id in ids)
-                files += File.new_for_path(Application.scheme_manager.get_scheme(id).get_filename());
+                files += File.new_for_path(scheme_manager.get_scheme(id).get_filename());
             
             label_info.set_text(label_info.get_text().replace("%s", string.joinv("\n", ids)));
         }

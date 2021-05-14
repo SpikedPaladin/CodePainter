@@ -32,7 +32,7 @@ namespace CodePainter {
             );
             this.update_func = update_func;
             
-            scheme_ids = Application.scheme_manager.get_scheme_ids();
+            scheme_ids = scheme_manager.get_scheme_ids();
             
             Gtk.TreeIter iter;
             foreach (var id in scheme_ids) {
@@ -67,11 +67,11 @@ namespace CodePainter {
             if (response_id == Gtk.ResponseType.OK) {
                 HashMap<string, Style>? styles = null;
                 if (add_check.active && add_scheme.get_active() > -1) {
-                    var scheme = Application.scheme_manager.get_scheme(scheme_ids[add_scheme.get_active()]);
+                    var scheme = scheme_manager.get_scheme(scheme_ids[add_scheme.get_active()]);
                     styles = new HashMap<string, Style>();
                     XmlUtil.load_styles(ref scheme, ref styles);
                 }
-                XmlUtil.write_scheme(Application.scheme_path + @"/$(entry_id.text).xml", entry_id.text, entry_name.text, "", "", styles);
+                XmlUtil.write_scheme(scheme_path + @"/$(entry_id.text).xml", entry_id.text, entry_name.text, "", "", styles);
                 update_func();
             }
             close();
