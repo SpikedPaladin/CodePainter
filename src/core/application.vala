@@ -1,5 +1,6 @@
 namespace CodePainter {
     public static Gtk.SourceStyleSchemeManager scheme_manager;
+    public static Gtk.SourceLanguageManager language_manager;
     public static string scheme_path;
     public static Settings settings;
     
@@ -10,6 +11,8 @@ namespace CodePainter {
             application_id = "me.paladin.CodePainter";
             
             scheme_manager = Gtk.SourceStyleSchemeManager.get_default();
+            language_manager = Gtk.SourceLanguageManager.get_default();
+            
             settings = new Settings("me.paladin.CodePainter");
             scheme_path = scheme_manager.get_search_path()[0];
         }

@@ -4,12 +4,6 @@ namespace CodePainter {
     
     [GtkTemplate (ui = "/me/paladin/CodePainter/ui/editor-page.ui")]
     public class EditorPage : Gtk.Box {
-        public unowned Gtk.SourceLanguageManager language_manager {
-            get {
-                return Gtk.SourceLanguageManager.get_default();
-            }
-        }
-        
         private Samples samples = new Samples();
         private HashMap<string, Style> styles;
         
