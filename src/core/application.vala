@@ -1,6 +1,6 @@
 namespace CodePainter {
     public static unowned Gtk.SourceStyleSchemeManager scheme_manager;
-    public static Gtk.SourceLanguageManager language_manager;
+    public static unowned Gtk.SourceLanguageManager language_manager;
     public static string scheme_path;
     public static Settings settings;
     
