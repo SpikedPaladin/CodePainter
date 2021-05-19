@@ -1,7 +1,7 @@
 namespace CodePainter {
     public static unowned Gtk.SourceStyleSchemeManager scheme_manager;
     public static unowned Gtk.SourceLanguageManager language_manager;
-    public static string scheme_path;
+    public static unowned string scheme_path;
     public static Settings settings;
     
     public class Application : Gtk.Application {
