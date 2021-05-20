@@ -153,6 +153,7 @@
             <property name="can-focus">True</property>
             <property name="receives-default">False</property>
             <property name="draw-indicator">True</property>
+            <property name="margin-top">10</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -170,6 +171,7 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="model">scheme_store</property>
+                <property name="margin-top">10</property>
                 <child>
                   <object class="GtkCellRendererText" id="id"/>
                   <attributes>
