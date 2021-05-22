@@ -78,7 +78,7 @@
             <property name="can-focus">True</property>
             <property name="receives-default">False</property>
             <property name="halign">start</property>
-            <property name="margin-top">30</property>
+            <property name="margin-top">10</property>
             <property name="draw-indicator">True</property>
             <signal name="toggled" handler="toggle_delete" swapped="no"/>
           </object>
@@ -98,6 +98,7 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="halign">start</property>
+                <property name="margin-top">10</property>
                 <property name="label" translatable="yes">If you delete an item, it will be permanetly lost.</property>
               </object>
             </child>
