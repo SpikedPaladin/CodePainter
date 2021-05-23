@@ -11,7 +11,7 @@ namespace CodePainter {
         [GtkChild]
         private unowned Gtk.Revealer revealer;
         [GtkChild]
-        private unowned Gtk.Label label_info;
+        private unowned Gtk.Label label_ids;
         
         public DeleteDialog(Gtk.Window window, string[] ids, owned UpdateFunc update_func) {
             Object(
@@ -23,7 +23,7 @@ namespace CodePainter {
             foreach (var id in ids)
                 files += File.new_for_path(scheme_manager.get_scheme(id).get_filename());
             
-            label_info.set_text(label_info.get_text().replace("%s", string.joinv("\n", ids)));
+            label_ids.set_text(string.joinv("\n", ids));
         }
         
         [GtkCallback]
