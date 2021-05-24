@@ -1,12 +1,12 @@
 namespace CodePainter {
     
     public class Style {
-        public string? foreground { get; set; }
-        public string? background { get; set; }
-        public bool bold { get; set; }
-        public bool italic { get; set; }
-        public bool underline { get; set; }
-        public bool strikethrough { get; set; }
+        public string? foreground;
+        public string? background;
+        public bool bold;
+        public bool italic;
+        public bool underline;
+        public bool strikethrough;
         
         public Style.from_source_style(Gtk.SourceStyle style) {
             foreground = style.foreground;
