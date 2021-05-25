@@ -9,7 +9,8 @@ project_deps = [
 project_sources = files(
     'main.vala',
     
-    'util/style.vala',
+    'model/style.vala',
+    
     'util/samples.vala',
     'util/xml-util.vala',
     'util/font-util.vala',
