@@ -350,6 +350,8 @@ namespace CodePainter {
                 color_foreground.activate();
                 
                 button_clear.set_sensitive(true);
+                
+                on_style_changed(color_foreground);
             } else {
                 color_foreground.set_rgba({ 0, 0, 0, 1 });
                 color_foreground.set_sensitive(false);
@@ -365,6 +367,8 @@ namespace CodePainter {
                 color_background.activate();
                 
                 button_clear.set_sensitive(true);
+                
+                on_style_changed(color_background);
             } else {
                 color_background.set_rgba({ 0, 0, 0, 1 });
                 color_background.set_sensitive(false);
