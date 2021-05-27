@@ -355,7 +355,9 @@ namespace CodePainter {
             } else {
                 color_foreground.set_rgba({ 0, 0, 0, 1 });
                 color_foreground.set_sensitive(false);
+                
                 styles[current_style].foreground = null;
+                
                 clear_style_if_empty(current_style);
                 update_preview();
             }
@@ -372,7 +374,9 @@ namespace CodePainter {
             } else {
                 color_background.set_rgba({ 0, 0, 0, 1 });
                 color_background.set_sensitive(false);
+                
                 styles[current_style].background = null;
+                
                 clear_style_if_empty(current_style);
                 update_preview();
             }
