@@ -197,16 +197,17 @@ namespace CodePainter {
                 
                 set_title(scheme_manager.get_scheme(id).get_name());
             } else {
-                stack.set_visible_child(home_page);
-                
-                button_close.set_visible(false);
-                button_create.set_visible(true);
-                button_select.set_visible(true);
-                button_save.set_visible(false);
-                editor_page.close_scheme();
-                home_page.update_page();
-                
-                set_title("Code Painter");
+                editor_page.close_scheme(() => {
+                    stack.set_visible_child(home_page);
+                    
+                    button_close.set_visible(false);
+                    button_create.set_visible(true);
+                    button_select.set_visible(true);
+                    button_save.set_visible(false);
+                    home_page.update_page();
+                    
+                    set_title("Code Painter");
+                });
             }
         }
     }

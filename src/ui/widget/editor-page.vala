@@ -13,6 +13,8 @@ namespace CodePainter {
         
         private string temp_path;
         
+        private bool edited;
+        
         private ulong toggle_bold_handler;
         private ulong toggle_italic_handler;
         private ulong toggle_underline_handler;
@@ -178,15 +180,42 @@ namespace CodePainter {
         public void save_scheme() {
             if (current_scheme != null)
                 write_scheme(scheme_manager.get_scheme(current_scheme).get_filename());
+            
+            edited = false;
         }
         
-        public void close_scheme() {
+        public void close_scheme(owned CloseFunc? close_func = null) {
+            if (edited) {
+                var dialog = new Gtk.MessageDialog(
+                        get_toplevel() as Gtk.Window,
+                        Gtk.DialogFlags.MODAL,
+                        Gtk.MessageType.QUESTION,
+                        Gtk.ButtonsType.YES_NO,
+                        "Color scheme has unsaved changes!"
+                );
+                dialog.secondary_text = "Are you sure you want to close this scheme?";
+                
+                int response = dialog.run();
+                if (response == Gtk.ResponseType.YES) {
+                    close();
+                    close_func();
+                }
+                
+                dialog.close();
+            } else {
+                close();
+                close_func();
+            }
+        }
+        
+        private void close() {
             File file = File.new_for_path(temp_path + @"/$(current_scheme)_temp.xml");
             file.delete_async.begin();
             
             current_scheme = null;
             
             scheme_manager.set_search_path(null);
+            edited = false;
         }
         
         [GtkCallback]
@@ -340,6 +369,8 @@ namespace CodePainter {
                 }
             }
             
+            edited = true;
+            
             clear_style_if_empty(current_style);
             update_preview();
         }
@@ -357,6 +388,8 @@ namespace CodePainter {
                 color_foreground.set_sensitive(false);
                 
                 styles[current_style].foreground = null;
+                
+                edited = true;
                 
                 clear_style_if_empty(current_style);
                 update_preview();
@@ -376,6 +409,8 @@ namespace CodePainter {
                 color_background.set_sensitive(false);
                 
                 styles[current_style].background = null;
+                
+                edited = true;
                 
                 clear_style_if_empty(current_style);
                 update_preview();
@@ -419,6 +454,8 @@ namespace CodePainter {
             if (styles[style_id].is_empty()) {
                 styles.unset(style_id);
                 clear_style_buttons();
+                
+                edited = true;
             }
         }
         
@@ -438,5 +475,7 @@ namespace CodePainter {
                     (int)(0.5 + rgba.blue * 255)
             );
         }
+        
+        public delegate void CloseFunc();
     }
 }
