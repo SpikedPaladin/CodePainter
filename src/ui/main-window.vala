@@ -32,6 +32,8 @@ namespace CodePainter {
             settings.changed["night-mode"].connect(update_theme);
             update_theme();
             
+            editor_page.bind_property("edited", button_save, "sensitive", BindingFlags.SYNC_CREATE);
+            
             home_page.scheme_selected.connect(id => switch_page(id));
             home_page.toggle_selection.connect(toggle_selection);
             
