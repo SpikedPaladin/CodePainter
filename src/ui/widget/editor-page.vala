@@ -13,7 +13,7 @@ namespace CodePainter {
         
         private string temp_path;
         
-        private bool edited;
+        public bool edited { get; private set; }
         
         private ulong toggle_bold_handler;
         private ulong toggle_italic_handler;
