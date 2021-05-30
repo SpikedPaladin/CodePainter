@@ -40,6 +40,15 @@ namespace CodePainter {
             string description,
             HashMap<string, Style>? styles = null
         ) {
+            var file = File.new_for_path(path);
+            if (!file.get_parent().query_exists()) {
+                try {
+                    file.get_parent().make_directory_with_parents();
+                } catch (Error e) {
+                    print("%s\n", e.message);
+                }
+            }
+            
             var writer = new Xml.TextWriter.filename(path);
             writer.set_indent(true);
             writer.set_indent_string("  ");
