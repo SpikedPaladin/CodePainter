@@ -32,6 +32,12 @@ namespace CodePainter {
             settings.changed["night-mode"].connect(update_theme);
             update_theme();
             
+            editor_page.notify["edited"].connect(() => {
+                if (editor_page.edited)
+                    header.title = "*" + header.title;
+                else
+                    header.title = header.title.substring(1);
+            });
             editor_page.bind_property("edited", button_save, "sensitive", BindingFlags.SYNC_CREATE);
             
             home_page.scheme_selected.connect(id => switch_page(id));
