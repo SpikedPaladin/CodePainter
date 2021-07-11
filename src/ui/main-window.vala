@@ -29,9 +29,6 @@ namespace CodePainter {
         public MainWindow(Gtk.Application application) {
             Object(application: application);
             
-            settings.changed["night-mode"].connect(update_theme);
-            update_theme();
-            
             editor_page.notify["edited"].connect(() => {
                 if (editor_page.edited)
                     header.title = "*" + header.title;
@@ -100,11 +97,6 @@ namespace CodePainter {
                 authors: new string[] { "PaladinDev" },
                 version: "0.1"
             );
-        }
-        
-        private void update_theme() {
-            var night_mode = settings.get_boolean("night-mode");
-            Gtk.Settings.get_default().gtk_application_prefer_dark_theme = night_mode;
         }
         
         private void import_activated() {

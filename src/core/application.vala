@@ -27,6 +27,9 @@ namespace CodePainter {
         public override void startup() {
             base.startup();
             
+            settings.changed["night-mode"].connect(update_theme);
+            update_theme();
+            
             // Main menu
             set_accels_for_action("win.preferences", { "<Primary>comma" });
             set_accels_for_action("win.inspector", { "<Primary><Shift>I" });
@@ -34,6 +37,11 @@ namespace CodePainter {
             // Create menu
             set_accels_for_action("win.create", { "<Primary>N" });
             set_accels_for_action("win.import", { "<Primary>I" });
+        }
+        
+        private void update_theme() {
+            var night_mode = settings.get_boolean("night-mode");
+            Gtk.Settings.get_default().gtk_application_prefer_dark_theme = night_mode;
         }
     }
 }
