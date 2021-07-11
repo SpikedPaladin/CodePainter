@@ -18,6 +18,8 @@ namespace CodePainter {
         }
         
         public override void activate() {
+            base.activate();
+            
             window = new MainWindow(this);
             window.present();
             
