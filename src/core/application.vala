@@ -22,11 +22,11 @@ namespace CodePainter {
             
             window = new MainWindow(this);
             window.present();
-            
-            setup_accels();
         }
         
-        public void setup_accels() {
+        public override void startup() {
+            base.startup();
+            
             // Main menu
             set_accels_for_action("win.preferences", { "<Primary>comma" });
             set_accels_for_action("win.inspector", { "<Primary><Shift>I" });
