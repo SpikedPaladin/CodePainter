@@ -7,6 +7,7 @@ project('code-painter', ['c', 'vala'],
 app_id = 'me.paladin.CodePainter'
 datadir = get_option('datadir')
 
+gnome = import('gnome')
 i18n = import('i18n')
 
 subdir('data')

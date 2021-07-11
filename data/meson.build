@@ -43,8 +43,6 @@ if compile_schemas.found()
     )
 endif
 
-gnome = import('gnome')
-
 project_resources = gnome.compile_resources(
     'resources',
     app_id + '.gresource.xml',
