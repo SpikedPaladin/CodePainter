@@ -1,4 +1,5 @@
-# Scheme Editor
+# Scheme Editor (deprecated, use [Schemes](https://gitlab.gnome.org/chergert/schemes))
+
 Color scheme editor for [GtkSourceView](https://wiki.gnome.org/Projects/GtkSourceView)
 
 ![Screenshot](./screenshot.png)
